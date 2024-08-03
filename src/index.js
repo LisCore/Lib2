@@ -2,7 +2,7 @@ import './styles/style.css';
 import { createHome } from './home.js';
 import { createAbout } from './about.js';
 import { createMenu } from './menu.js';
-// import { appendContent, clearContent } from './utils.js';
+import { markButtonAsClicked } from './utils.js';
 
 document.addEventListener("DOMContentLoaded", () => {
     const content = document.querySelector("#content");
@@ -15,9 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const menu = document.querySelector(".menu");
     const about = document.querySelector(".about");
 
-    home.addEventListener("click", () => createHome(content));
-    menu.addEventListener("click", () => createMenu(content));
-    about.addEventListener("click", () => createAbout(content));
+    home.addEventListener("click", () => {
+        createHome(content);
+        markButtonAsClicked(home);
+    });
+    menu.addEventListener("click", () => {
+        createMenu(content);
+        markButtonAsClicked(menu);
+    });
+    about.addEventListener("click", () => {
+        createAbout(content);
+        markButtonAsClicked(about);
+    });
 
     createHome(content);
+    markButtonAsClicked(home);
 });
